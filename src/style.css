@@ -336,8 +336,8 @@ html.modal-open,body.modal-open{overflow:hidden}
 .article-qr-frame{position:absolute;left:82px;top:225px;width:244px;height:260px}
 .article-qr{position:absolute;left:2px;top:10px;width:240px;height:240px;border-radius:10px;object-fit:cover}
 .article-corner{position:absolute;width:16px;height:16px;z-index:3}
-.article-corner-tl{left:0;top:2px}
-.article-corner-bl{left:0;top:242px;transform:scaleY(-1)}
+.article-corner-tl{left:-12px;top:2px}
+.article-corner-bl{left:-12px;top:242px;transform:scaleY(-1)}
 .article-corner-tr{left:240px;top:2px;transform:rotate(180deg) scaleY(-1)}
 .article-corner-br{left:240px;top:242px;transform:rotate(180deg)}
 .article-scan{position:absolute;z-index:2;left:3px;top:10px;width:238px;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(255,179,2,.55) 18%,var(--yellow) 50%,rgba(255,179,2,.55) 82%,transparent 100%);box-shadow:0 0 12px rgba(255,179,2,.38);opacity:.65;animation:article-scan 3.4s cubic-bezier(.45,0,.55,1) infinite alternate}
