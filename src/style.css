@@ -1204,10 +1204,35 @@ html.modal-open,body.modal-open{overflow:hidden}
     line-height:13px!important;
   }
 
-  /* Product photography in the following carousel cards is bottom-aligned so
-     bottles, vehicles and people sit naturally on the card edge. */
-  .case-track .case-card:nth-child(n+2) .case-image>img{
-    object-position:center bottom;
+  /* Every item in the mobile rail uses the exact same card box as the first
+     item. Explicit rows prevent later images or titles from shortening it. */
+  .case-track{align-items:stretch}
+  .case-track .case-card{
+    display:grid;
+    height:458px;
+    min-height:458px;
+    grid-template-rows:410px 48px;
+    align-self:stretch;
+    overflow:visible;
+  }
+  .case-track .case-card .case-image{
+    width:100%;
+    height:410px!important;
+    min-height:410px;
+  }
+  .case-track .case-card .case-image>img{
+    inset:0;
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  .case-track .case-card h3{
+    height:48px;
+    min-height:48px;
+    margin:0;
+    padding-top:10px;
   }
 
   /* The footer and the hamburger drawer now share one navigation type scale. */
