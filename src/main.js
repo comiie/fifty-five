@@ -799,6 +799,11 @@ let casesFilterTimer = 0
 casesFilterButtons.forEach(button => button.addEventListener('click', () => {
   const nextFilter = button.dataset.filter
   if (!casesListGrid || !nextFilter || nextFilter === activeCasesFilter) return
+  if (innerWidth <= 768) {
+    const filterRail = button.closest('.cases-filter')
+    const left = button.offsetLeft - (filterRail.clientWidth - button.offsetWidth) / 2
+    filterRail.scrollTo({ left: Math.max(0, left), behavior:'smooth' })
+  }
   activeCasesFilter = nextFilter
   casesFilterButtons.forEach(item => {
     const selected = item === button
