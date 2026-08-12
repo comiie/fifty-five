@@ -895,3 +895,35 @@ html.modal-open,body.modal-open{overflow:hidden}
   .article-modal{width:408px;max-width:none;margin:0;zoom:.8;transform:translateY(14px);transform-origin:center}
   .article-modal-layer.is-open .article-modal{transform:none}
 }
+
+/* Final homepage mobile rhythm: align the slogan with section content, keep it
+   on its authored two lines, and shorten only the homepage case rail. */
+@media(max-width:768px){
+  .site-shell>.hero .hero-copy{
+    width:calc(100vw - 40px);
+    margin-inline:auto;
+    padding-right:0;
+    padding-left:0;
+  }
+  .site-shell>.hero .hero-copy h1{
+    width:100%;
+    max-width:100%;
+    font-size:clamp(24px,7.7vw,30px);
+    line-height:1.42;
+    white-space:nowrap;
+  }
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .case-image{height:480px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result,
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track.is-dragging .case-card .result{
+    bottom:14px;
+    height:340px;
+  }
+  .footer-grid>div:last-child{align-items:center;text-align:center}
+  .footer-grid>div:last-child em{width:100%;text-align:center}
+  .footer-grid>div:last-child .qr{margin-inline:auto}
+  .footer-grid>div:last-child p{width:100%;margin-inline:auto;text-align:center}
+}
+@media(max-width:520px){
+  .footer-grid>div:last-child{align-items:center;text-align:center}
+  .footer-grid>div:last-child p{width:100%;text-align:center}
+}
