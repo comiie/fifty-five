@@ -1158,3 +1158,33 @@ html.modal-open,body.modal-open{overflow:hidden}
   body.is-cases-page .cases-feature-result,
   body.is-cases-page .cases-list-result{width:62%;height:278px}
 }
+
+/* Mobile alignment fixes: keep the service rail below the fixed navigation,
+   align its heading with the site's shared title grid, and preserve a visible
+   leading gutter on the case-index carousel. */
+@media(max-width:768px){
+  .services{scroll-margin-top:110px}
+  .services .section-title{
+    margin-left:calc(8.3335vw - 20px);
+  }
+  .service-tabs{
+    top:102px;
+    margin-top:24px;
+  }
+  .service-card{scroll-margin-top:174px}
+
+  body.is-cases-page .cases-list-layout{
+    width:100%;
+    padding-left:20px;
+  }
+  body.is-cases-page .cases-filter{
+    width:100vw;
+    margin-left:-20px;
+  }
+  body.is-cases-page .cases-list-grid{
+    width:calc(100vw - 20px);
+    padding-right:20px;
+    padding-left:0;
+    scroll-padding-left:0;
+  }
+}
