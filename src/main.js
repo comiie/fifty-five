@@ -118,7 +118,7 @@ const homePage = `
       </nav>
       <div class="hero-copy wrap"><h1>以数据驱动AI转型，<br>助力品牌始终领先一步</h1>${button('联系专家')}</div>
       <div class="hero-art" aria-hidden="true"><img class="hero-poster" src="${A}hero-figma.png" alt=""><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="${A}hero-figma.png"><source src="${A}55.mp4" type="video/mp4"></video></div>
-      <span class="member-badge"><span class="member-badge-top"><span class="member-badge-logo"><img src="${A}proud-member.svg" alt="The Brandtech Group"></span></span><span class="member-badge-bottom">Proud member<img src="${A}footer-arrow.svg" alt=""></span></span>
+      <span class="member-badge"><span class="member-badge-top"><img class="member-badge-logo" src="${A}proud-member-logo.svg" alt="The Brandtech Group"></span><span class="member-badge-bottom">Proud member<img src="${A}proud-member-arrow.svg" alt=""></span></span>
     </header>
 
     <main>
@@ -350,6 +350,38 @@ document.body.classList.toggle('is-privacy-page', isPrivacyPage)
 if (isCasesPage) document.title = '成功案例｜fifty-five'
 if (isCaseDetailPage) document.title = `${detailCurrentStudy.title}｜fifty-five`
 if (isPrivacyPage) document.title = '隐私政策｜fifty-five'
+
+// 移动端折叠菜单：保留“联系我们”在顶栏，语言切换放入展开导航。
+document.querySelectorAll('.nav').forEach(navElement => {
+  const actions = navElement.querySelector('.nav-actions')
+  if (!actions) return
+  const menuButton = document.createElement('button')
+  menuButton.className = 'mobile-menu-toggle'
+  menuButton.type = 'button'
+  menuButton.setAttribute('aria-label', '展开导航')
+  menuButton.setAttribute('aria-expanded', 'false')
+  menuButton.innerHTML = '<i></i><i></i><i></i>'
+  actions.append(menuButton)
+  const menu = document.createElement('div')
+  menu.className = 'mobile-menu'
+  menu.setAttribute('aria-hidden', 'true')
+  menu.innerHTML = '<a href="/">首页</a><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a href="/privacy">隐私政策</a><button class="mobile-menu-lang" type="button">EN</button>'
+  navElement.append(menu)
+  const closeMenu = () => {
+    navElement.classList.remove('menu-open')
+    menuButton.setAttribute('aria-expanded', 'false')
+    menuButton.setAttribute('aria-label', '展开导航')
+    menu.setAttribute('aria-hidden', 'true')
+  }
+  menuButton.addEventListener('click', () => {
+    const open = !navElement.classList.contains('menu-open')
+    navElement.classList.toggle('menu-open', open)
+    menuButton.setAttribute('aria-expanded', String(open))
+    menuButton.setAttribute('aria-label', open ? '关闭导航' : '展开导航')
+    menu.setAttribute('aria-hidden', String(!open))
+  })
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu))
+})
 
 // 小标题使用逐字符色阶，避免部分浏览器不支持 background-clip:text。
 document.querySelectorAll('.section-title small').forEach(label => {
