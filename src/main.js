@@ -118,7 +118,7 @@ const homePage = `
       </nav>
       <div class="hero-copy wrap"><h1>以数据驱动AI转型，<br>助力品牌始终领先一步</h1>${button('联系专家')}</div>
       <div class="hero-art" aria-hidden="true"><img class="hero-poster" src="${A}hero-figma.png" alt=""><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="${A}hero-figma.png"><source src="${A}55.mp4" type="video/mp4"></video></div>
-      <span class="member-badge"><span class="member-badge-top"><img class="member-badge-logo" src="${A}proud-member-logo.svg" alt="The Brandtech Group"></span><span class="member-badge-bottom">Proud member<img src="${A}proud-member-arrow.svg" alt=""></span></span>
+      <span class="member-badge"><span class="member-badge-top"><img class="member-badge-logo" src="${A}proud-member-logo.svg" alt="The Brandtech Group"></span><span class="member-badge-bottom">Proud member<span class="member-badge-arrow" aria-hidden="true"></span></span></span>
     </header>
 
     <main>
@@ -455,6 +455,15 @@ if ('IntersectionObserver' in window && !reduced) {
   serviceCards.forEach(card => card.classList.add('service-text-visible'))
 }
 let serviceSyncFrame = 0
+const centerServiceLink = link => {
+  const tabs = link.closest('.service-tabs')
+  if (!tabs || innerWidth > 768) return
+  const links = [...tabs.querySelectorAll('a')]
+  const left = link === links.at(-1)
+    ? tabs.scrollWidth
+    : link.offsetLeft - (tabs.clientWidth - link.offsetWidth) / 2
+  tabs.scrollTo({ left: Math.max(0, left), behavior: 'auto' })
+}
 const syncServiceAnchor = () => {
   const activationLine = Math.min(220, innerHeight * .25)
   let activeIndex = 0
@@ -464,7 +473,10 @@ const syncServiceAnchor = () => {
   serviceLinks.forEach((link, index) => {
     const active = index === activeIndex
     link.classList.toggle('on', active)
-    if (active) link.setAttribute('aria-current', 'true')
+    if (active) {
+      link.setAttribute('aria-current', 'true')
+      centerServiceLink(link)
+    }
     else link.removeAttribute('aria-current')
   })
   serviceSyncFrame = 0
@@ -473,6 +485,7 @@ serviceLinks.forEach(link => link.addEventListener('click', event => {
   const card = document.querySelector(link.getAttribute('href'))
   if (!card) return
   event.preventDefault()
+  centerServiceLink(link)
   const top = card.getBoundingClientRect().top + scrollY - 120
   scrollTo({ top, behavior: reduced ? 'auto' : 'smooth' })
   history.replaceState(null, '', link.getAttribute('href'))

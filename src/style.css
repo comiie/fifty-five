@@ -83,7 +83,7 @@ footer{position:relative}
 .member-badge .member-badge-top{display:grid;width:104px;height:54px;margin:0;padding:0;place-items:center;background:#fff;color:#1f1f1f;box-shadow:0 0 8.745px rgba(0,0,0,.16)}
 .member-badge-logo{display:block;width:83px;height:34px;object-fit:fill}
 .member-badge .member-badge-bottom{display:flex;width:104px;height:30px;margin:0;padding:0 8px;align-items:center;justify-content:space-between;background:#1f1f1f;color:#fff;font-size:10px;line-height:1;white-space:nowrap}
-.member-badge-bottom>img{display:block;width:7px;height:7px;filter:none}
+.member-badge .member-badge-bottom .member-badge-arrow{display:block;width:8px;height:8px;margin:0 2px 0 0;padding:0;flex:0 0 8px;border-top:2px solid #ffb302;border-right:2px solid #ffb302;background:transparent;transform:rotate(45deg)}
 @media(max-height:900px) and (min-width:769px){.screen{height:100vh;min-height:720px}.hero-art{height:100vh}.hero-copy{padding-top:39.63vh}.member-badge{bottom:calc(3.7vh - 5px)}}
 @media(min-width:769px) and (min-height:901px){.hero .member-badge{bottom:40px}}
 
@@ -231,7 +231,7 @@ footer{position:relative}
   .services{padding:72px 0 56px}
   .services-grid{width:calc(100vw - 40px)}
   .services-sidebar{display:contents}
-  .service-tabs{position:sticky;z-index:18;top:0;gap:28px;margin:30px -20px 24px;padding:14px 20px 16px;border-bottom:1px solid #333;background:rgba(0,0,0,.96);backdrop-filter:blur(14px);scrollbar-width:none}
+  .service-tabs{position:sticky;z-index:18;top:0;gap:24px;margin:30px -20px 24px;padding:14px 28px 16px 20px;overflow-x:auto;overflow-y:hidden;border-bottom:1px solid #333;background:rgba(0,0,0,.96);backdrop-filter:blur(14px);scroll-behavior:smooth;scroll-padding-inline:20px;scrollbar-width:none;touch-action:pan-x;overscroll-behavior-inline:contain}
   .service-tabs::-webkit-scrollbar{display:none}
   .service-tabs a{font-size:16px;line-height:24px}
   .service-stack{gap:24px}
@@ -254,8 +254,8 @@ footer{position:relative}
   .cases-head .button{height:52px;gap:14px;padding-right:18px}
   .cases-head .button-icon{width:40px;height:40px}
   .case-track{margin-top:38px}
-  .case-track .case-image{height:520px}
-  .case-track .result,.case-track.is-dragging .case-card .result{right:12px;bottom:12px;width:62%;height:352px;background:var(--yellow);color:#000;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .case-track .case-image{height:540px}
+  .case-track .result,.case-track.is-dragging .case-card .result{right:12px;bottom:14px;width:64%;height:340px;padding:22px;background:var(--yellow);color:#000;-webkit-backdrop-filter:none;backdrop-filter:none}
   .case-track .result strong,.case-track.is-dragging .case-card .result strong{color:#000}
   .case-track .result small,.case-track.is-dragging .case-card .result small{color:rgba(0,0,0,.8)}
   .case-track .result strong:nth-of-type(n+2),.case-track .result small:nth-of-type(n+2),.case-track.is-dragging .case-card .result strong:nth-of-type(n+2),.case-track.is-dragging .case-card .result small:nth-of-type(n+2){opacity:1;transform:none}
@@ -286,8 +286,8 @@ footer{position:relative}
   .site-shell>.hero .hero-copy h1{font-size:30px}
   .section-title h2{font-size:32px}
   .cases-head .button{font-size:14px}
-  .case-track .case-image{height:470px}
-  .case-track .result,.case-track.is-dragging .case-card .result{height:326px;width:66%}
+  .case-track .case-image{height:540px}
+  .case-track .result,.case-track.is-dragging .case-card .result{height:340px;width:64%}
   .footer-grid{grid-template-columns:minmax(0,1fr) 110px;gap:44px 20px}
 }
 @media(max-width:520px){
@@ -304,7 +304,7 @@ footer{position:relative}
   .footer-grid>div:last-child{display:flex;align-items:flex-start;gap:14px}
   .footer-grid>div:last-child .qr{width:112px}
   .footer-grid>div:last-child p{margin:0;width:112px;font-size:13px;line-height:1.7;text-align:center}
-  .copyright{width:calc(100vw - 40px);margin-top:34px;padding-top:18px;justify-content:space-between;border-top:1px solid #333}
+  .copyright{width:calc(100vw - 40px);margin-top:34px;padding-top:18px;flex-direction:column;align-items:center;justify-content:center;gap:8px;border-top:1px solid #333;text-align:center}
 }
 @media(max-width:430px){
   .newsletter b{gap:8px;font-size:14px;line-height:22px;letter-spacing:-.35px}
@@ -373,7 +373,7 @@ footer{position:relative}
 .case-track.is-dragging .case-card h3{color:#fff}
 .case-progress{position:relative;overflow:hidden}
 .case-progress span{will-change:transform}
-@media(max-width:768px){.case-track{gap:20px;margin-left:20px}.case-track .case-card{width:85vw;flex-basis:85vw}.case-track .result{right:12px;bottom:12px;width:62%}}
+@media(max-width:768px){.case-track{gap:18px;margin-left:20px}.case-track .case-card{width:78vw;flex-basis:78vw}.case-track .result{right:12px;bottom:14px;width:64%}}
 @media(prefers-reduced-motion:reduce){.case-track .result,.case-track .result strong,.case-track .result small,.case-track .case-card h3{transition:none}}
 
 /* Contact drawer — Figma 193:1516. */
@@ -780,4 +780,28 @@ html.modal-open,body.modal-open{overflow:hidden}
 @media(max-width:430px){
   .case-track .result,
   .case-track.is-dragging .case-card .result{width:66%;height:326px}
+}
+
+/* Final mobile proportions: keep the fourth service anchor reachable and give
+   the expanded case result enough breathing room without hiding the next card. */
+@media(max-width:768px){
+  .service-tabs a:last-child{padding-right:20px}
+  .case-track .case-card{width:76vw;flex-basis:76vw}
+  .case-track .case-image{height:560px}
+  .case-track .result,
+  .case-track.is-dragging .case-card .result{
+    right:12px;
+    bottom:14px;
+    width:64%;
+    height:356px;
+    padding:24px 20px;
+  }
+  .footer-grid>div:last-child p{width:100%;text-align:center}
+  .copyright{align-items:center;justify-content:center;text-align:center}
+}
+@media(max-width:430px){
+  .case-track .case-card{width:76vw;flex-basis:76vw}
+  .case-track .case-image{height:560px}
+  .case-track .result,
+  .case-track.is-dragging .case-card .result{width:64%;height:356px}
 }
