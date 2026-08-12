@@ -1168,10 +1168,10 @@ html.modal-open,body.modal-open{overflow:hidden}
     margin-left:calc(8.3335vw - 20px);
   }
   .service-tabs{
-    top:102px;
+    top:90px;
     margin-top:24px;
   }
-  .service-card{scroll-margin-top:174px}
+  .service-card{scroll-margin-top:162px}
 
   body.is-cases-page .cases-list-layout{
     width:100%;
