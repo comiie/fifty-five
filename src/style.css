@@ -109,6 +109,7 @@ footer{position:relative}
   .hero-copy .button-arrow{width:min(18px,.938vw);height:min(18px,.938vw)}
   .member-badge{left:8.333vw;bottom:40px;width:104px;height:84px}
 }
+
 .button{padding:10px 24px 10px 10px}
 .button-icon{width:38px;height:38px}
 .button-arrow{width:18px;height:18px}
@@ -1240,4 +1241,39 @@ html.modal-open,body.modal-open{overflow:hidden}
     font-size:16px;
     line-height:24px;
   }
+}
+
+/* Ultra-wide layout: keep every editorial module on one centered 1600px rail.
+   Full-bleed marquees remain viewport-wide, while their repeated content fills
+   the complete 2K/4K canvas without making the document horizontally scroll. */
+:root{
+  --content-max:1600px;
+  --content-width:min(var(--content-max),83.333vw);
+  --content-gutter:max(8.3335vw,calc((100vw - var(--content-max))/2));
+}
+html,body,.site-shell{max-width:100%;overflow-x:clip}
+.partner-strip{animation-name:partner-marquee-wide}
+@keyframes partner-marquee-wide{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-50% - 6px))}
+}
+@media(prefers-reduced-motion:reduce){.partner-strip{transform:translateX(0)}}
+
+@media(min-width:769px){
+  .wrap{width:var(--content-width)}
+  .case-slider{width:100%;overflow-x:clip;overflow-y:visible}
+  .case-track{margin-left:var(--content-gutter)}
+  .member-badge{left:var(--content-gutter)}
+  .cases-feature{left:var(--content-gutter)}
+  .case-detail-summary{left:var(--content-gutter)}
+}
+@media(min-width:1401px){
+  .services-grid{
+    grid-template-columns:minmax(260px,320px) minmax(0,1fr);
+    gap:80px;
+    width:var(--content-width);
+    max-width:none;
+    margin-inline:auto;
+  }
+  .service-stack,.service-card{min-width:0}
 }

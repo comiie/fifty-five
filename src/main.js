@@ -157,7 +157,7 @@ const homePage = `
 
       <section class="partners section">
         <div class="section-title centered"><small>/ OUR PARTNER /</small><h2>合作伙伴</h2></div>
-        <div class="partner-marquee" aria-label="合作伙伴轮播"><div class="partner-strip">${[0,1].map(()=>`<div class="partner-run">${Array.from({length:12},(_,index)=>index===0?`<div class="partner-card salesforce-card"><img src="${A}partner-salesforce-logo.png" alt="Salesforce"></div>`:`<div class="partner-card"><img src="${A}partner-${String(index + 1).padStart(2,'0')}.png" alt="合作伙伴 ${index + 1}"></div>`).join('')}</div>`).join('')}</div></div>
+        <div class="partner-marquee" aria-label="合作伙伴轮播"><div class="partner-strip">${Array.from({length:6},()=>`<div class="partner-run">${Array.from({length:12},(_,index)=>index===0?`<div class="partner-card salesforce-card"><img src="${A}partner-salesforce-logo.png" alt="Salesforce"></div>`:`<div class="partner-card"><img src="${A}partner-${String(index + 1).padStart(2,'0')}.png" alt="合作伙伴 ${index + 1}"></div>`).join('')}</div>`).join('')}</div></div>
       </section>
 
       <section class="cases section" id="cases">
