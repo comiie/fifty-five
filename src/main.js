@@ -118,7 +118,7 @@ const homePage = `
       </nav>
       <div class="hero-copy wrap"><h1>以数据驱动AI转型，<br>助力品牌始终领先一步</h1>${button('联系专家')}</div>
       <div class="hero-art" aria-hidden="true"><img class="hero-poster" src="${A}hero-figma.png" alt=""><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="${A}hero-figma.png"><source src="${A}55.mp4" type="video/mp4"></video></div>
-      <img class="member-badge" src="${A}proud-member.svg" alt="The Brandtech Group — Proud member">
+      <span class="member-badge"><img src="${A}proud-member.svg" alt="The Brandtech Group — Proud member"></span>
     </header>
 
     <main>
