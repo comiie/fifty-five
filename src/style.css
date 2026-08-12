@@ -927,3 +927,65 @@ html.modal-open,body.modal-open{overflow:hidden}
   .footer-grid>div:last-child{align-items:center;text-align:center}
   .footer-grid>div:last-child p{width:100%;text-align:center}
 }
+
+/* Mobile density pass: a shorter service crop and case rail, consistent
+   supporting copy, a left-aligned QR group, and a persistent top navigation. */
+@media(max-width:768px){
+  .site-shell>.hero .nav,
+  .cases-page-nav{
+    position:fixed!important;
+    z-index:30;
+  }
+  .site-shell>.hero .nav.is-hidden,
+  .cases-page-nav.is-hidden{transform:none!important}
+
+  .service-visual{
+    height:360px;
+    min-height:360px;
+    aspect-ratio:auto;
+    overflow:hidden;
+  }
+  .service-visual img{
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .case-image{height:450px}
+
+  main p,
+  .why-card p,
+  .brand-grid .lead,
+  .contact .lead,
+  .service-copy .service-lead,
+  .service-copy p,
+  .service-copy ul,
+  .cases-page-intro>p,
+  .case-detail-copy,
+  .privacy-copy section>div,
+  footer p{
+    font-size:16px;
+  }
+
+  .footer-grid>div:last-child{
+    align-items:flex-start;
+    text-align:left;
+  }
+  .footer-grid>div:last-child em{
+    width:auto;
+    margin-left:0;
+    text-align:left;
+  }
+  .footer-grid>div:last-child .qr{margin-inline:0}
+  .footer-grid>div:last-child p{
+    width:auto;
+    margin:0;
+    text-align:left;
+  }
+}
+@media(max-width:520px){
+  .footer-grid>div:last-child{align-items:flex-start;text-align:left}
+  .footer-grid>div:last-child p{width:auto;text-align:left}
+}
