@@ -989,3 +989,50 @@ html.modal-open,body.modal-open{overflow:hidden}
   .footer-grid>div:last-child{align-items:flex-start;text-align:left}
   .footer-grid>div:last-child p{width:auto;text-align:left}
 }
+
+/* Compact mobile cards: preserve every content item while tightening the
+   typographic hierarchy and the vertical rhythm shown in the references. */
+@media(max-width:768px){
+  .why-grid{gap:18px;margin-top:38px}
+  .why-card{height:330px}
+  .why-card-face{padding:24px}
+  .why-card i{width:42px;height:42px}
+  .why-card i img{width:21px;height:21px}
+  .why-card h3,.why-card-face h3{margin:24px 0 10px;font-size:20px;line-height:1.4}
+  .why-card p,.why-card-face p{font-size:14px;line-height:1.7}
+  .why-card-face>span{right:24px;bottom:24px;left:24px;width:max-content;max-width:calc(100% - 48px);padding:9px 10px;font-size:12px;line-height:15px}
+
+  .service-stack{gap:18px}
+  .service-card{border-radius:14px}
+  .service-copy{min-height:440px;padding:26px 24px 28px}
+  .service-copy small{margin-bottom:12px;font-size:14px;line-height:20px}
+  .service-copy h3{margin-bottom:18px;font-size:24px;line-height:1.3}
+  .service-copy .service-lead{margin-bottom:10px;font-size:18px;line-height:1.45}
+  .service-copy p{margin-bottom:16px;font-size:14px;line-height:1.7}
+  .service-copy .service-support{margin-bottom:8px;font-size:18px;line-height:1.45}
+  .service-copy ul{padding-left:20px;font-size:14px;line-height:1.7}
+
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .case-image{height:410px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .case-image>span{top:18px;left:18px;padding:7px 14px;font-size:14px;line-height:18px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result,
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track.is-dragging .case-card .result{
+    right:12px;
+    bottom:12px;
+    width:62%;
+    height:278px;
+    padding:0;
+  }
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result b,
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result strong,
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result small{left:18px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result b{top:18px;font-size:14px;line-height:18px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result strong{font-size:32px;line-height:34px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result small{font-size:12px;line-height:15px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result strong:nth-of-type(1){top:52px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result small:nth-of-type(1){top:88px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result strong:nth-of-type(2){top:123px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result small:nth-of-type(2){top:159px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result strong:nth-of-type(3){top:194px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track .result small:nth-of-type(3){top:230px}
+  body:not(.is-case-detail-page):not(.is-cases-page) .case-track h3{margin-top:10px;font-size:16px;line-height:24px}
+}
