@@ -1187,4 +1187,32 @@ html.modal-open,body.modal-open{overflow:hidden}
     padding-left:0;
     scroll-padding-left:0;
   }
+
+  /* Keep every mobile case metric inside its yellow panel. Desktop cards use
+     a single-line caption, but the narrower mobile panel needs two calm lines. */
+  .case-track .result small,
+  .cases-feature-result small,
+  .cases-list-result small{
+    right:14px;
+    left:18px;
+    width:auto;
+    max-width:none;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    font-size:10px!important;
+    line-height:13px!important;
+  }
+
+  /* Product photography in the following carousel cards is bottom-aligned so
+     bottles, vehicles and people sit naturally on the card edge. */
+  .case-track .case-card:nth-child(n+2) .case-image>img{
+    object-position:center bottom;
+  }
+
+  /* The footer and the hamburger drawer now share one navigation type scale. */
+  .footer-grid>div:nth-child(2) a{
+    font-size:16px;
+    line-height:24px;
+  }
 }
