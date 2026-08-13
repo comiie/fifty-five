@@ -1429,3 +1429,124 @@ html,body,.site-shell{max-width:100%;overflow-x:clip}
     flex:0 0 420px;
   }
 }
+
+/* Responsive bands
+   1367–1920: large desktop. The original 1600px footer columns now scale on
+   the same centered rail, so 1400/1440 no longer jump to an overflowing grid. */
+@media(min-width:1367px) and (max-width:1920px){
+  .contact-grid{
+    grid-template-columns:minmax(0,45fr) minmax(0,55fr);
+    gap:clamp(40px,4.167vw,80px);
+  }
+  .contact-grid>*{min-width:0}
+  .contact-cards{gap:16px}
+  .contact-cards article{
+    width:auto;
+    min-width:0;
+    flex:1 1 0;
+  }
+  .contact-grid form,
+  .contact-grid .form-row,
+  .contact-grid label,
+  .contact-grid input,
+  .contact-grid textarea{min-width:0;width:100%}
+
+  footer{
+    height:auto;
+    min-height:444px;
+    overflow:hidden;
+  }
+  .footer-grid{
+    grid-template-columns:21.25% 28.75% 27.5% 7.5%;
+    gap:5%;
+  }
+  .footer-grid>*{min-width:0}
+  .footer-grid>div:first-child .logo{max-width:100%}
+  .newsletter>label{width:100%}
+  .newsletter b{font-size:16px}
+  .footer-grid>div:first-child p,
+  .footer-grid>div:last-child{font-size:12px}
+}
+
+/* 1025–1366: notebooks and compact desktops. */
+@media(min-width:1025px) and (max-width:1366px){
+  .wrap{width:83.333vw}
+  .contact-grid{
+    grid-template-columns:minmax(0,44fr) minmax(0,56fr);
+    gap:clamp(28px,3.5vw,48px);
+  }
+  .contact-grid>*{min-width:0}
+  .contact-cards{gap:14px}
+  .contact-cards article{width:auto;min-width:0;flex:1 1 0}
+  .contact-grid form,
+  .contact-grid .form-row,
+  .contact-grid label,
+  .contact-grid input,
+  .contact-grid textarea{min-width:0;width:100%}
+  footer{height:auto;min-height:444px;overflow:hidden}
+  .footer-grid{grid-template-columns:21.25% 28.75% 27.5% 7.5%;gap:5%}
+  .footer-grid>*{min-width:0}
+  .newsletter>label{width:100%}
+  .newsletter b{font-size:14px}
+  .footer-grid>div:first-child p,
+  .footer-grid>div:last-child{font-size:12px}
+}
+
+/* The lower end of the notebook band needs the same breathing room as a
+   tablet; otherwise the QR and newsletter are compressed into tiny columns. */
+@media(min-width:1025px) and (max-width:1199px){
+  .contact{height:auto;min-height:0}
+  .contact-grid{grid-template-columns:minmax(0,1fr);gap:48px}
+  .contact-cards{margin-top:56px}
+  footer{padding:56px 0 32px}
+  .footer-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px 40px}
+  .footer-grid>div:last-child{align-items:flex-start}
+  .footer-grid>div:last-child em{margin-left:0}
+  .footer-grid>div:last-child p{text-align:left}
+  .qr{width:120px}
+  .copyright{position:static;width:100%;margin-top:40px;padding-top:16px;transform:none}
+}
+
+/* 769–1024: tablet. Keep the desktop visual language, but stop squeezing the
+   form and footer into four narrow columns. */
+@media(min-width:769px) and (max-width:1024px){
+  .wrap{width:83.333vw}
+  .nav{width:83.333vw;height:64px;padding:10px 12px}
+  .nav .logo{width:140px;height:auto}
+  .nav-links{gap:18px;margin-left:0}
+  .nav-links a{font-size:13px}
+  .nav .lang{width:40px;height:40px;font-size:13px}
+  .nav .button{height:40px;gap:8px;padding:4px 10px 4px 4px;font-size:13px}
+  .nav .button-icon{width:32px;height:32px}
+
+  .contact{height:auto;min-height:0}
+  .contact-grid{grid-template-columns:minmax(0,1fr);gap:48px}
+  .contact-grid>*{min-width:0}
+  .contact-cards{margin-top:56px}
+  .contact-cards article{width:auto;min-width:0;flex:1 1 0}
+  .contact-grid form,
+  .contact-grid .form-row,
+  .contact-grid label,
+  .contact-grid input,
+  .contact-grid textarea{min-width:0;width:100%}
+
+  footer{height:auto;min-height:0;padding:56px 0 32px;overflow:hidden}
+  .footer-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px 36px}
+  .footer-grid>*{min-width:0}
+  .newsletter{height:auto}
+  .newsletter>label{width:100%}
+  .footer-grid>div:last-child{align-items:flex-start}
+  .footer-grid>div:last-child em{margin-left:0}
+  .footer-grid>div:last-child p{text-align:left}
+  .qr{width:120px}
+  .copyright{position:static;width:100%;margin-top:40px;padding-top:16px;transform:none}
+}
+
+/* ≤768: phone. Existing mobile composition remains in charge; these guards
+   make the boundary continuous and prevent long fields from widening it. */
+@media(max-width:768px){
+  .wrap{width:calc(100vw - 40px);max-width:none}
+  .contact-grid,.footer-grid,.contact-grid form{max-width:100%}
+  footer .footer-grid{grid-template-columns:minmax(0,1fr)}
+  .contact-grid input,.contact-grid textarea,.newsletter>label{min-width:0;max-width:100%}
+}
