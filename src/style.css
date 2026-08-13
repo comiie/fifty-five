@@ -2163,4 +2163,9 @@ footer .copyright{
     grid-column:4!important;
     justify-self:end!important;
   }
+  .nav-actions .button-mark,
+  .nav-actions .button-arrow{
+    width:clamp(25px,1.8125vw,31px)!important;
+    height:clamp(25px,1.8125vw,31px)!important;
+  }
 }
