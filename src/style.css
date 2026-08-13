@@ -996,6 +996,24 @@ html.modal-open,body.modal-open{overflow:hidden}
   .footer-grid>div:last-child p{width:auto;text-align:left}
 }
 
+/* The Brandtech reference motion lives only inside the existing media frame. */
+.brand-motion{
+  position:relative;
+  width:100%;
+  height:518px;
+  overflow:hidden;
+  border-radius:16px;
+  background:#101010;
+  isolation:isolate;
+}
+.brand-motion-fallback,.brand-motion-lottie{position:absolute;inset:0;width:100%;height:100%}
+.brand-motion-fallback{object-fit:cover;transition:opacity .45s ease}
+.brand-motion-lottie{opacity:0;transition:opacity .45s ease}
+.brand-motion-lottie svg{display:block;width:100%!important;height:100%!important}
+.brand-motion.is-ready .brand-motion-lottie{opacity:1}
+.brand-motion.is-ready .brand-motion-fallback{opacity:0}
+@media(max-width:768px){.brand-motion{height:300px}}
+
 /* Compact mobile cards: preserve every content item while tightening the
    typographic hierarchy and the vertical rhythm shown in the references. */
 @media(max-width:768px){

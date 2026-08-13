@@ -1,3 +1,5 @@
+import lottie from 'lottie-web'
+
 const A = '/assets/'
 const currentPath = location.pathname.replace(/\/+$/, '') || '/'
 const isCasesPage = currentPath === '/cases'
@@ -137,7 +139,10 @@ const homePage = `
       <section class="brandtech section">
         <div class="brand-grid wrap">
           <div><div class="section-title"><small>// BRANDTECH</small><h2>The Brandtech Group 成员</h2></div><p class="lead">作为 Brandtech Group 的成员，我们结合前沿技术与创新能力，帮助品牌打造更高效、更智能、更具价值的营销体验。</p>${button('了解更多','https://thebrandtechgroup.com/',true)}</div>
-          <img src="${A}brandtech.jpg" alt="The Brandtech Group" />
+          <div class="brand-motion" role="img" aria-label="The Brandtech Group">
+            <img class="brand-motion-fallback" src="${A}brandtech.jpg" alt="">
+            <div class="brand-motion-lottie" aria-hidden="true"></div>
+          </div>
         </div>
       </section>
 
@@ -438,6 +443,29 @@ if ('IntersectionObserver' in window) {
 
 // 仅处理滚轮阻尼；页面内容本身保持静态。
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Keep the reference cube motion confined to the right-hand media frame.
+const brandMotionStage = document.querySelector('.brand-motion')
+const brandMotionContainer = brandMotionStage?.querySelector('.brand-motion-lottie')
+if (brandMotionStage && brandMotionContainer && !reduced) {
+  const brandMotion = lottie.loadAnimation({
+    container: brandMotionContainer,
+    renderer: 'svg',
+    loop: true,
+    autoplay: false,
+    path: `${A}brandtech-motion.json`,
+    rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
+  })
+  brandMotion.addEventListener('DOMLoaded', () => brandMotionStage.classList.add('is-ready'))
+  if ('IntersectionObserver' in window) {
+    const brandMotionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => entry.isIntersecting ? brandMotion.play() : brandMotion.pause())
+    }, { threshold: .18 })
+    brandMotionObserver.observe(brandMotionStage)
+  } else {
+    brandMotion.play()
+  }
+}
 
 const serviceCards = [...document.querySelectorAll('.service-card')]
 const serviceLinks = [...document.querySelectorAll('.service-tabs a')]
