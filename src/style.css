@@ -2098,3 +2098,31 @@ footer .copyright{
     margin-top:36px;
   }
 }
+
+/* Keep the desktop navigation labels centered on the full navigation rail.
+   Logo and actions retain their edge alignment without shifting this group. */
+@media(min-width:769px){
+  .nav.wrap{
+    position:fixed!important;
+    grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr)!important;
+  }
+  .nav>.logo{
+    grid-column:1!important;
+    width:clamp(140px,11vw,183px)!important;
+    max-width:100%!important;
+    justify-self:start!important;
+  }
+  .nav-links{
+    position:static!important;
+    grid-column:2!important;
+    width:max-content!important;
+    margin-left:0!important;
+    transform:none!important;
+    justify-self:center!important;
+    justify-content:center!important;
+  }
+  .nav-actions{
+    grid-column:3!important;
+    justify-self:end!important;
+  }
+}
