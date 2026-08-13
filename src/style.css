@@ -2108,6 +2108,9 @@ footer .copyright{
     column-gap:0!important;
     padding-inline:0!important;
   }
+  .nav.wrap.is-scrolled{
+    padding-inline:clamp(10px,1vw,18px)!important;
+  }
   .nav>.logo{
     grid-column:1!important;
     width:clamp(140px,11vw,183px)!important;
