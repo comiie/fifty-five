@@ -2110,6 +2110,8 @@ footer .copyright{
   }
   .nav.wrap.is-scrolled{
     padding-inline:clamp(10px,1vw,18px)!important;
+    padding-block:clamp(8px,.625vw,12px)!important;
+    height:auto!important;
   }
   .nav>.logo{
     grid-column:1!important;
