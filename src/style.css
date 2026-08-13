@@ -2099,12 +2099,14 @@ footer .copyright{
   }
 }
 
-/* Keep the desktop navigation labels centered on the full navigation rail.
-   Logo and actions retain their edge alignment without shifting this group. */
+/* Figma top navigation: logo and links form one left-side group. The links
+   follow the logo by the design's 80px gap and remain over the black hero. */
 @media(min-width:769px){
   .nav.wrap{
     position:fixed!important;
-    grid-template-columns:minmax(0,1fr) max-content minmax(0,1fr)!important;
+    grid-template-columns:auto max-content minmax(0,1fr) max-content!important;
+    column-gap:0!important;
+    padding-inline:0!important;
   }
   .nav>.logo{
     grid-column:1!important;
@@ -2116,13 +2118,14 @@ footer .copyright{
     position:static!important;
     grid-column:2!important;
     width:max-content!important;
-    margin-left:0!important;
+    margin-left:clamp(32px,4.167vw,80px)!important;
     transform:none!important;
-    justify-self:center!important;
-    justify-content:center!important;
+    justify-self:start!important;
+    justify-content:flex-start!important;
+    gap:clamp(24px,4.167vw,80px)!important;
   }
   .nav-actions{
-    grid-column:3!important;
+    grid-column:4!important;
     justify-self:end!important;
   }
 }
