@@ -5,7 +5,7 @@ const isCaseDetailPage = currentPath.startsWith('/cases/')
 const isPrivacyPage = currentPath === '/privacy'
 const detailSlug = isCaseDetailPage ? currentPath.split('/').pop() : ''
 
-const button = (text, href = '#contact') => `<a class="button codex-button" href="${href}"><span class="button-icon"><span class="button-mark" aria-hidden="true"></span><img class="button-arrow" src="${A}button-hover-arrow.svg" alt=""></span><span class="button-label"><span>${text}</span><span aria-hidden="true">${text}</span></span></a>`
+const button = (text, href = '#contact', external = false) => `<a class="button codex-button" href="${href}"${external?' target="_blank" rel="noopener noreferrer"':''}><span class="button-icon"><span class="button-mark" aria-hidden="true"></span><img class="button-arrow" src="${A}button-hover-arrow.svg" alt=""></span><span class="button-label"><span>${text}</span><span aria-hidden="true">${text}</span></span></a>`
 
 const whyFace = (item, side) => `<div class="why-card-face why-card-${side}" aria-hidden="${side === 'back'}"><i><img src="${A}${item[0]}" alt=""></i><h3>${item[1]}</h3><p>${item[2]}</p><span>${item[3]}</span></div>`
 
@@ -118,7 +118,7 @@ const homePage = `
       </nav>
       <div class="hero-copy wrap"><h1>以数据驱动AI转型，<br>助力品牌始终领先一步</h1>${button('联系专家')}</div>
       <div class="hero-art" aria-hidden="true"><img class="hero-poster" src="${A}hero-figma.png" alt=""><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="${A}hero-figma.png"><source src="${A}55.mp4" type="video/mp4"></video></div>
-      <span class="member-badge"><span class="member-badge-top"><img class="member-badge-logo" src="${A}proud-member-logo.svg" alt="The Brandtech Group"></span><span class="member-badge-bottom">Proud member<span class="member-badge-arrow" aria-hidden="true"></span></span></span>
+      <a class="member-badge" href="https://thebrandtechgroup.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 The Brandtech Group"><span class="member-badge-top"><img class="member-badge-logo" src="${A}proud-member-logo.svg" alt="The Brandtech Group"></span><span class="member-badge-bottom">Proud member<span class="member-badge-arrow" aria-hidden="true"></span></span></a>
     </header>
 
     <main>
@@ -136,7 +136,7 @@ const homePage = `
 
       <section class="brandtech section">
         <div class="brand-grid wrap">
-          <div><div class="section-title"><small>// BRANDTECH</small><h2>The Brandtech Group 成员</h2></div><p class="lead">作为 Brandtech Group 的成员，我们结合前沿技术与创新能力，帮助品牌打造更高效、更智能、更具价值的营销体验。</p>${button('了解更多')}</div>
+          <div><div class="section-title"><small>// BRANDTECH</small><h2>The Brandtech Group 成员</h2></div><p class="lead">作为 Brandtech Group 的成员，我们结合前沿技术与创新能力，帮助品牌打造更高效、更智能、更具价值的营销体验。</p>${button('了解更多','https://thebrandtechgroup.com/',true)}</div>
           <img src="${A}brandtech.jpg" alt="The Brandtech Group" />
         </div>
       </section>
