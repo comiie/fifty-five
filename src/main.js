@@ -108,7 +108,7 @@ const articleModalMarkup = `
   </div>`
 
 const footerMarkup = `
-  <footer><div class="footer-grid wrap"><div class="footer-brand"><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p></div><div class="footer-nav"><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="footer-follow"><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy"${isPrivacyPage?' aria-current="page"':''}>隐私政策</a></div></footer>`
+  <footer><div class="footer-grid wrap"><div class="footer-brand"><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p><div class="socials" aria-label="社交媒体"><span><img src="${A}social-linkedin.svg" alt="LinkedIn"></span><span><img src="${A}social-youtube.svg" alt="YouTube"></span><span><img src="${A}social-wechat.svg" alt="微信"></span></div></div><div class="footer-nav"><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="footer-follow"><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy"${isPrivacyPage?' aria-current="page"':''}>隐私政策</a></div></footer>`
 
 const homePage = `
   <div class="site-shell">
@@ -176,7 +176,7 @@ const homePage = `
       </section>
     </main>
 
-    <footer><div class="footer-grid wrap"><div class="footer-brand"><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p></div><div class="footer-nav"><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="footer-follow"><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy">隐私政策</a></div></footer>
+    <footer><div class="footer-grid wrap"><div class="footer-brand"><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p><div class="socials" aria-label="社交媒体"><span><img src="${A}social-linkedin.svg" alt="LinkedIn"></span><span><img src="${A}social-youtube.svg" alt="YouTube"></span><span><img src="${A}social-wechat.svg" alt="微信"></span></div></div><div class="footer-nav"><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="footer-follow"><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy">隐私政策</a></div></footer>
 
     <div class="contact-drawer-layer" aria-hidden="true">
       <button class="contact-drawer-backdrop" type="button" tabindex="-1" aria-label="关闭联系表单"></button>
