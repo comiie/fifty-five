@@ -41,14 +41,16 @@ const casesPageStudies = [
   { image:'cases-hugo-boss.png', alt:'HUGO BOSS 转化率优化案例', category:'奢侈品 & 美容', title:'HUGO BOSS：持续优化转化率（CRO），最高提升 22% 转化效果', href:'/cases/hugo-boss' }
 ]
 
-const caseIndustryFilters = [
+const caseIndustries = [
   ['luxury','奢侈品与美妆'],['retail','零售与服务'],['auto','汽车'],['travel','旅游出行'],['telecom','通信'],
   ['food','食品饮料'],['energy','能源'],['fmcg','快消品'],['customer','客户服务'],['hospitality','酒店餐旅']
 ]
+const caseIndustryFilters = [['all','所有'], ...caseIndustries]
 
 const casesForIndustry = filter => {
-  const industryIndex = Math.max(0, caseIndustryFilters.findIndex(([key]) => key === filter))
-  const label = caseIndustryFilters[industryIndex][1]
+  if (filter === 'all') return caseIndustries.flatMap(([key]) => casesForIndustry(key))
+  const industryIndex = Math.max(0, caseIndustries.findIndex(([key]) => key === filter))
+  const label = caseIndustries[industryIndex][1]
   if (filter === 'luxury') return casesPageStudies
   const titleEnds = ['洞察用户需求，提升品牌认知与增长效率','整合全渠道数据，建立统一业务洞察','优化媒体投放策略，提升营销投资回报率','通过智能分析改善客户旅程与转化表现','以数据平台打通业务系统与增长链路','应用 AI 模型加速决策与运营优化']
   return casesPageStudies.map((_, index) => {
@@ -253,7 +255,7 @@ const casesPage = `
     <main class="cases-list-main" id="case-list">
       <div class="cases-list-layout wrap">
         <aside class="cases-filter" aria-label="案例行业筛选">${caseIndustryFilters.map(([key,label],index)=>`<button class="${index===0?'is-active':''}" type="button" data-filter="${key}" aria-pressed="${index===0?'true':'false'}"><i aria-hidden="true"></i>${label}</button>`).join('')}</aside>
-        <div class="cases-list-grid">${casesPageStudies.map(casesGridCard).join('')}</div>
+        <div class="cases-list-grid" data-filter="all">${casesForIndustry('all').map(casesGridCard).join('')}</div>
       </div>
     </main>
 
@@ -821,7 +823,7 @@ if (detailSections.length && 'IntersectionObserver' in window) {
 
 const casesFilterButtons = [...document.querySelectorAll('.cases-filter button')]
 const casesListGrid = document.querySelector('.cases-list-grid')
-let activeCasesFilter = 'luxury'
+let activeCasesFilter = 'all'
 let casesFilterTimer = 0
 casesFilterButtons.forEach(button => button.addEventListener('click', () => {
   const nextFilter = button.dataset.filter
