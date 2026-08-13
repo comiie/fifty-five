@@ -114,7 +114,7 @@ const homePage = `
       <nav class="nav wrap" aria-label="主导航">
         <img src="${A}logo.png" class="logo" alt="fifty-five" />
         <div class="nav-links"><a href="#services">我们的服务</a><a href="/cases">成功案例</a><a href="#contact">文章</a></div>
-        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" aria-label="访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
+        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
       </nav>
       <div class="hero-copy wrap"><h1>以数据驱动AI转型，<br>助力品牌始终领先一步</h1>${button('联系专家')}</div>
       <div class="hero-art" aria-hidden="true"><img class="hero-poster" src="${A}hero-figma.png" alt=""><video class="hero-video" autoplay muted loop playsinline preload="auto" poster="${A}hero-figma.png"><source src="${A}55.mp4" type="video/mp4"></video></div>
@@ -233,7 +233,7 @@ const casesPage = `
       <nav class="nav wrap cases-page-nav" aria-label="主导航">
         <a class="cases-page-logo-link" href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a>
         <div class="nav-links"><a href="/#services">我们的服务</a><a class="is-current" href="/cases" aria-current="page">成功案例</a><a href="#articles">文章</a></div>
-        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" aria-label="访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
+        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
       </nav>
       <div class="cases-page-intro wrap">
         <div class="section-title"><small>// CASE STUDIES</small><h1>成功案例</h1></div>
@@ -264,7 +264,7 @@ const caseDetailPage = `
       <nav class="nav wrap cases-page-nav" aria-label="主导航">
         <a class="cases-page-logo-link" href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a>
         <div class="nav-links"><a href="/#services">我们的服务</a><a class="is-current" href="/cases" aria-current="page">成功案例</a><a href="#articles">文章</a></div>
-        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" aria-label="访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
+        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
       </nav>
       <div class="case-detail-summary">
         <span class="case-detail-category">${detailCurrentStudy.category}</span>
@@ -330,7 +330,7 @@ const privacyPage = `
       <nav class="nav wrap cases-page-nav" aria-label="主导航">
         <a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a>
         <div class="nav-links"><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a href="#articles">文章</a></div>
-        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" aria-label="访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
+        <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>${button('联系我们')}</div>
       </nav>
       <div class="privacy-content wrap">
         <div class="privacy-heading section-title"><small>// PRIVACY POLICY</small><h1>隐私政策</h1></div>
@@ -365,7 +365,7 @@ document.querySelectorAll('.nav').forEach(navElement => {
   const menu = document.createElement('div')
   menu.className = 'mobile-menu'
   menu.setAttribute('aria-hidden', 'true')
-  menu.innerHTML = '<a href="/">首页</a><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a href="/privacy">隐私政策</a><a class="mobile-menu-lang" href="https://www.fifty-five.com/" aria-label="访问 fifty-five 英文官网">EN</a>'
+  menu.innerHTML = '<a href="/">首页</a><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a href="/privacy">隐私政策</a><a class="mobile-menu-lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>'
   navElement.append(menu)
   const closeMenu = () => {
     navElement.classList.remove('menu-open')

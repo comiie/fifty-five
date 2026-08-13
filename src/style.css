@@ -1252,7 +1252,12 @@ html.modal-open,body.modal-open{overflow:hidden}
   --content-gutter:max(8.3335vw,calc((100vw - var(--content-max))/2));
 }
 html,body,.site-shell{max-width:100%;overflow-x:clip}
-.partner-strip{animation-name:partner-marquee-wide}
+.partner-strip{
+  animation-name:partner-marquee-wide;
+  /* 六组内容移动到中点等于走过三组；102 秒保持原先一组/34 秒的速率，
+     手机和桌面因此拥有一致的视觉速度。 */
+  animation-duration:102s;
+}
 @keyframes partner-marquee-wide{
   from{transform:translateX(0)}
   to{transform:translateX(calc(-50% - 6px))}
@@ -1279,3 +1284,125 @@ html,body,.site-shell{max-width:100%;overflow-x:clip}
 }
 /* EN 语言入口保持按钮外观，同时作为真实链接访问英文官网。 */
 .nav .lang{display:grid;place-items:center;color:#000;text-decoration:none}
+
+/* Final mobile stability pass: the case recommendation must always retain its
+   image/result half, while the detail masthead grows with real title length. */
+@media(max-width:768px){
+  /* EN belongs to the expanded drawer only on compact navigation. */
+  .nav-actions>.lang{display:none!important}
+
+  body.is-cases-page .cases-feature{
+    display:flex!important;
+    height:auto!important;
+    min-height:0;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  body.is-cases-page .cases-feature-image{
+    position:relative!important;
+    inset:auto!important;
+    display:block!important;
+    width:100%!important;
+    height:410px!important;
+    min-height:410px;
+    flex:0 0 410px;
+    overflow:hidden;
+  }
+  body.is-cases-page .cases-feature-image>img{
+    position:absolute!important;
+    inset:0!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    opacity:1!important;
+    visibility:visible!important;
+    transform:none!important;
+  }
+  body.is-cases-page .cases-feature-result{
+    position:absolute!important;
+    z-index:3!important;
+    right:12px!important;
+    bottom:12px!important;
+    display:block!important;
+    width:62%!important;
+    height:278px!important;
+    overflow:hidden;
+    opacity:1!important;
+    visibility:visible!important;
+    background:var(--yellow)!important;
+    color:#000!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  body.is-cases-page .cases-feature-copy{
+    position:relative;
+    z-index:2;
+    display:block!important;
+    width:100%;
+    min-height:0;
+    background:var(--panel);
+  }
+
+  body.is-case-detail-page .case-detail-hero{
+    display:flex;
+    height:auto!important;
+    min-height:0;
+    flex-direction:column;
+    overflow:hidden;
+  }
+  body.is-case-detail-page .case-detail-summary{
+    position:relative!important;
+    inset:auto!important;
+    display:flex;
+    width:calc(100% - 40px)!important;
+    height:auto!important;
+    min-height:0;
+    margin:0 auto;
+    padding:126px 0 54px;
+    flex-direction:column;
+  }
+  body.is-case-detail-page .case-detail-category,
+  body.is-case-detail-page .case-detail-summary h1,
+  body.is-case-detail-page .case-detail-meta,
+  body.is-case-detail-page .case-detail-summary>.button{
+    position:static!important;
+    inset:auto!important;
+  }
+  body.is-case-detail-page .case-detail-category{
+    align-self:flex-start;
+    margin:0 0 24px;
+  }
+  body.is-case-detail-page .case-detail-summary h1{
+    width:100%!important;
+    margin:0 0 30px;
+    overflow-wrap:anywhere;
+  }
+  body.is-case-detail-page .case-detail-meta{
+    display:grid;
+    width:100%!important;
+    margin:0 0 36px;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  body.is-case-detail-page .case-detail-meta>div,
+  body.is-case-detail-page .case-detail-meta>div:nth-child(3){
+    width:auto!important;
+    min-width:0;
+    height:auto;
+    padding:0 8px 0 10px;
+  }
+  body.is-case-detail-page .case-detail-meta dd{
+    overflow-wrap:anywhere;
+    white-space:normal;
+  }
+  body.is-case-detail-page .case-detail-summary>.button{align-self:flex-start}
+  body.is-case-detail-page .case-detail-art{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:420px!important;
+    flex:0 0 420px;
+  }
+}
