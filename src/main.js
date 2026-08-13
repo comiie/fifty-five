@@ -108,7 +108,7 @@ const articleModalMarkup = `
   </div>`
 
 const footerMarkup = `
-  <footer><div class="footer-grid wrap"><div><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p><div class="socials">${['linkedin','instagram','twitter','youtube','facebook','wechat'].map(n=>`<img src="${A}social-${n}.svg" alt="${n}">`).join('')}</div></div><div><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="newsletter"><em>订阅简报</em><b><img src="${A}tea-icon.png" alt="">订阅我们的月度简报 Tea O'Clock！</b><p>获取最新行业洞察与公司动态，每月直达你的邮箱。</p><label><input type="email" placeholder="请输入您的邮箱"><button aria-label="订阅"><img class="footer-chevron" src="${A}footer-arrow.svg" alt=""></button></label></div><div><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy"${isPrivacyPage?' aria-current="page"':''}>隐私政策</a></div></footer>`
+  <footer><div class="footer-grid wrap"><div class="footer-brand"><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p></div><div class="footer-nav"><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="footer-follow"><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy"${isPrivacyPage?' aria-current="page"':''}>隐私政策</a></div></footer>`
 
 const homePage = `
   <div class="site-shell">
@@ -176,7 +176,7 @@ const homePage = `
       </section>
     </main>
 
-    <footer><div class="footer-grid wrap"><div><img src="${A}logo.png" class="logo" alt="fifty-five"><p>用数据与技术驱动增长，助力品牌走向未来。</p><div class="socials">${['linkedin','instagram','twitter','youtube','facebook','wechat'].map(n=>`<img src="${A}social-${n}.svg" alt="${n}">`).join('')}</div></div><div><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="newsletter"><em>订阅简报</em><b><img src="${A}tea-icon.png" alt="">订阅我们的月度简报 Tea O'Clock！</b><p>获取最新行业洞察与公司动态，每月直达你的邮箱。</p><label><input type="email" placeholder="请输入您的邮箱"><button aria-label="订阅"><img class="footer-chevron" src="${A}footer-arrow.svg" alt=""></button></label></div><div><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy">隐私政策</a></div></footer>
+    <footer><div class="footer-grid wrap"><div class="footer-brand"><a href="/" aria-label="返回首页"><img src="${A}logo.png" class="logo" alt="fifty-five"></a><p>用数据与技术驱动增长，助力品牌走向未来。</p></div><div class="footer-nav"><em>网站导航</em><a href="/#services">我们的服务</a><a href="/cases">成功案例</a><a class="article-trigger" href="#articles">文章</a><a class="footer-contact-trigger" href="#contact">联系我们</a></div><div class="footer-follow"><em>关注我们</em><img class="qr" src="${A}wechat-qr.png" alt="微信公众号二维码"><p>扫码关注公众号</p></div></div><div class="copyright wrap">© 2026 fifty-five. All rights reserved.<a href="/privacy">隐私政策</a></div></footer>
 
     <div class="contact-drawer-layer" aria-hidden="true">
       <button class="contact-drawer-backdrop" type="button" tabindex="-1" aria-label="关闭联系表单"></button>
@@ -275,7 +275,6 @@ const caseDetailPage = `
         <span class="case-detail-category">${detailCurrentStudy.category}</span>
         <h1>${detailCurrentStudy.title}</h1>
         <dl class="case-detail-meta"><div><dt>客户</dt><dd>大型奢侈品客户</dd></div><div><dt>服务</dt><dd>云服务、战略</dd></div><div><dt>日期</dt><dd>2026.5.12</dd></div></dl>
-        ${button('下载',`${A}${detailCurrentStudy.image}`)}
       </div>
       <div class="case-detail-art"><img src="${A}${detailCurrentStudy.image}" alt="${detailCurrentStudy.alt}"><div class="case-detail-result"><b>关键结果</b>${detailMetrics.map(metric=>`<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join('')}</div></div>
     </header>
