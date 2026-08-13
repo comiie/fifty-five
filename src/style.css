@@ -2108,11 +2108,17 @@ footer .copyright{
     column-gap:0!important;
     padding-inline:0!important;
   }
-  .nav.wrap::before{
+  .nav-actions{
+    position:relative!important;
+  }
+  .nav-actions::before{
     content:"";
     position:absolute;
     z-index:-1;
-    inset:calc(-1 * clamp(8px,.625vw,12px)) calc(-1 * clamp(10px,1vw,18px));
+    top:calc(-1 * clamp(8px,.625vw,12px));
+    bottom:calc(-1 * clamp(8px,.625vw,12px));
+    right:calc(-1px - clamp(10px,1vw,18px));
+    width:calc(var(--content-width) + 2 * clamp(10px,1vw,18px));
     border:1px solid transparent;
     border-radius:9px;
     background:transparent;
@@ -2120,13 +2126,18 @@ footer .copyright{
     pointer-events:none;
     transition:opacity .35s,background-color .35s,border-color .35s;
   }
+  @media(min-width:1025px){
+    .nav-actions::before{
+      width:calc(min(1600px,calc(100vw - clamp(48px,10vw,192px))) + 2 * clamp(10px,1vw,18px));
+    }
+  }
   .nav.wrap.is-scrolled{
     padding-inline:0!important;
     background:transparent!important;
     border-color:transparent!important;
     backdrop-filter:none!important;
   }
-  .nav.wrap.is-scrolled::before{
+  .nav.wrap.is-scrolled .nav-actions::before{
     border-color:#242424;
     background:#0b0b0be8;
     opacity:1;
