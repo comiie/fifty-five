@@ -1277,3 +1277,5 @@ html,body,.site-shell{max-width:100%;overflow-x:clip}
   }
   .service-stack,.service-card{min-width:0}
 }
+/* EN 语言入口保持按钮外观，同时作为真实链接访问英文官网。 */
+.nav .lang{display:grid;place-items:center;color:#000;text-decoration:none}
