@@ -2163,12 +2163,29 @@ footer .copyright{
     grid-column:4!important;
     justify-self:end!important;
   }
-  .nav-actions .button-mark{
-    width:clamp(25px,1.8125vw,31px)!important;
-    height:clamp(25px,1.8125vw,31px)!important;
-  }
-  .nav-actions .button-arrow{
-    width:clamp(16px,.9375vw,18px)!important;
-    height:clamp(16px,.9375vw,18px)!important;
+  @media(min-width:1001px){
+    .nav-actions .lang{
+      width:46px!important;
+      height:46px!important;
+      flex-basis:46px!important;
+    }
+    .nav-actions .button{
+      height:46px!important;
+      padding-top:6px!important;
+      padding-bottom:6px!important;
+      padding-left:6px!important;
+    }
+    .nav-actions .button-icon{
+      width:34px!important;
+      height:34px!important;
+    }
+    .nav-actions .button-mark{
+      width:22px!important;
+      height:22px!important;
+    }
+    .nav-actions .button-arrow{
+      width:18px!important;
+      height:18px!important;
+    }
   }
 }
