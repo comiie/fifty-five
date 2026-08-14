@@ -803,14 +803,14 @@ html.modal-open,body.modal-open{overflow:hidden}
 .detail-related .case-track .case-card:nth-child(2) .case-image>img,.detail-related .case-track .case-card:nth-child(3) .case-image>img{width:952px;height:400px;max-width:none;object-fit:cover}
 .detail-related .case-track .case-card:nth-child(3) .case-image>img{object-position:left center}
 
-@media(max-width:1400px) and (min-width:769px){
+@media(max-width:1440px) and (min-width:769px){
   .case-detail-summary{width:42vw}.case-detail-summary h1{width:42vw;font-size:clamp(27px,1.875vw,36px);line-height:1.5}
   .case-detail-meta>div{width:14vw}.case-detail-meta dt,.case-detail-meta dd{font-size:clamp(13px,.833vw,16px)}
   .case-detail-art>img{width:62.5vw;height:50.833vw}
   .case-detail-result{left:3.125vw}
   .case-detail-body{height:auto;padding:100px 0 120px}
-  .case-detail-body-inner{display:grid;height:auto;grid-template-columns:12.5% 67.5%;gap:20%}
-  .case-detail-anchor{top:110px;width:auto;margin-top:0}
+  .case-detail-body-inner{display:grid;height:auto;grid-template-columns:12.5% 67.5%;gap:20%;align-items:start;overflow:visible}
+  .case-detail-anchor{top:110px;width:auto;height:max-content;margin-top:0;align-self:start}
   .case-detail-anchor a{font-size:clamp(15px,.938vw,18px)}
   .case-detail-article{position:static;width:auto;height:auto}
   .case-detail-section{position:static;width:auto;margin-bottom:80px}

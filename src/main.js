@@ -299,7 +299,7 @@ const caseDetailPage = `
               <div class="case-detail-copy"><p>为了克服传统研究的局限性，Fifty-five 利用我们自主研发的智能体 AI 编排工具 Agent55，设计了一场自动化的生成式 AI 焦点小组活动。</p><ul><li>用户画像构建：我们将品牌的目标受众转化为多维度的 AI 用户画像（例如：收藏家、品味引领者、首次购买者等），每类画像涵盖了不同的年龄段、兴趣偏好、预算水平以及对奢侈腕表领域的熟悉程度。</li><li>针对性调研：我们共同设计了一套包含 19 个问题的评估框架，旨在从五个维度（内容新鲜度与互动性、品牌知名度与认知度、文化与伦理价值、产品卓越性、获取渠道与独特性）对该品牌及其竞争对手进行评估。</li><li>大规模交互测试：Agent55 模拟各类用户画像，向五大主流大语言模型（ChatGPT、Gemini、Claude、Mistral AI 和 Deepseek）进行交叉提问，以此捕捉不同受众群体对该品牌的“感受”以及各 AI 模型的不同反馈。</li></ul></div>
             </section>
             <section class="case-detail-section case-detail-outcome" id="outcome">
-              <div class="section-title"><small>// 结果</small><h2>一个持续运行的焦点小组，提供关键改进建议</h2></div>
+              <div class="section-title"><small>// 成果</small><h2>一个持续运行的焦点小组，提供关键改进建议</h2></div>
               <div class="case-detail-copy"><p>我们客户的生成式人工智能（GenAI）焦点小组通过独特的感知评分，就不同群体如何看待该品牌提供了关键洞察。这些洞察经由传统市场研究验证以确保其准确性，随后被用于制定旨在改善受众及大语言模型（LLM）感知的建议——例如，加强关于品牌可持续发展承诺的数字化传播，或围绕品牌深厚的专业积淀开发教育性内容。</p><p>如今，我们的客户不仅掌握了极具实操性的建议，还拥有了一个由 Agent55 AI 智能体驱动、全天候运行且响应极速的焦点小组。</p></div>
               <div class="case-detail-stats">${detailMetrics.map(metric=>`<article><strong>${metric[0]}</strong><p>${metric[1]}</p></article>`).join('')}</div>
             </section>
