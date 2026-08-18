@@ -73,25 +73,25 @@ const serviceCard = (item) =>
 
 const caseStudies = [
   {
-    image: "case1.jpg",
+    image: "cases-luxury-ai.png",
     alt: "奢侈品案例",
     category: "奢侈品 & 美容",
     title: "主要奢侈品品牌：利用AI焦点小组捕捉品牌认知",
     href: "/cases/luxury-ai",
   },
   {
-    image: "case2.jpg",
+    image: "cases-estee-lauder.png",
     alt: "雅诗兰黛案例",
     category: "奢侈品 & 美容",
     title: "雅诗兰黛：部署一个+8%媒体ROI和-10%营销预算的子午线MMM",
     href: "/cases/estee-lauder",
   },
   {
-    image: "case3.png",
+    image: "detail-auto.png",
     alt: "雷诺汽车案例",
     category: "汽车",
     title: "雷诺集团：利用CAPI和PII增强的转化测量提升活动表现",
-    href: "/cases/auto-1",
+    href: "/cases/renault-capi",
   },
 ];
 
@@ -196,20 +196,27 @@ const generatedDetailMatch = detailSlug.match(/^([a-z]+)-(\d+)$/);
 const generatedDetailStudy = generatedDetailMatch
   ? casesForIndustry(generatedDetailMatch[1])[Number(generatedDetailMatch[2]) - 1]
   : null;
-const detailHeroBySlug = {
-  "luxury-ai": ["detail-banner-luxury.jpg", 1350, 774],
-  "estee-lauder": ["detail-banner-estee.jpg", 2760, 1600],
-  "auto-1": ["detail-banner-auto.jpg", 2706, 1496],
-};
-const detailBaseStudy =
-  casesPageStudies.find((item) => item.href?.endsWith(`/${detailSlug}`)) || generatedDetailStudy || casesPageStudies[0];
-const detailHero = detailHeroBySlug[detailSlug];
-const detailCurrentStudy = {
-  ...detailBaseStudy,
-  image: detailHero?.[0] || detailBaseStudy.image,
-  imageWidth: detailHero?.[1] || 1080,
-  imageHeight: detailHero?.[2] || 878,
-};
+const promotedDetailStudies = [
+  {
+    image: "cases-feature-watch.png",
+    alt: "知名奢侈腕表品牌人工智能焦点小组案例",
+    category: "奢侈品 & 美容",
+    title: "知名奢侈品牌：利用人工智能焦点小组捕捉品牌感知",
+    href: "/cases/watch-ai",
+  },
+  {
+    image: "detail-auto.png",
+    alt: "雷诺汽车转化测量案例",
+    category: "汽车",
+    title: "雷诺集团：利用CAPI和PII增强的转化测量提升活动表现",
+    href: "/cases/renault-capi",
+  },
+];
+const detailCurrentStudy =
+  promotedDetailStudies.find((item) => item.href.endsWith(`/${detailSlug}`)) ||
+  casesPageStudies.find((item) => item.href?.endsWith(`/${detailSlug}`)) ||
+  generatedDetailStudy ||
+  casesPageStudies[0];
 
 if (isCaseDetailPage) {
   const detailHeroPreload = document.createElement("link");
@@ -227,27 +234,15 @@ const detailMetrics = [
 ];
 
 const detailOtherStudies = [
+  promotedDetailStudies[0],
   {
-    image: "detail-luxury-hero.png",
-    alt: "奢侈品人工智能焦点小组案例",
-    category: "奢侈品 & 美容",
-    title: "主要奢侈品品牌：利用AI焦点小组捕捉品牌认知",
-    href: "/cases/luxury-ai",
-  },
-  {
-    image: "detail-estee.png",
+    image: "cases-estee-lauder.png",
     alt: "雅诗兰黛媒体投资回报率案例",
     category: "奢侈品 & 美容",
     title: "雅诗兰黛：部署一个+8%媒体ROI和-10%营销预算的子午线MMM",
     href: "/cases/estee-lauder",
   },
-  {
-    image: "detail-auto.png",
-    alt: "雷诺汽车转化测量案例",
-    category: "汽车",
-    title: "雷诺集团：利用CAPI和PII增强的转化测量提升活动表现",
-    href: "/cases/auto-1",
-  },
+  promotedDetailStudies[1],
 ];
 
 const casesGridCard = (item, index) => {
@@ -448,8 +443,8 @@ const casesPage = `
         <p>当我们将人才与数据汇聚一堂，便能成就一个个精彩非凡的故事。<br>欢迎了解我们 fifty-fivers 团队如何把握趋势、运用尖端技术，并助力众多当今顶尖国际品牌实现数字化转型。</p>
       </div>
       <article class="cases-feature wrap" tabindex="0">
-        <a class="cases-feature-image" href="/cases/luxury-ai" aria-label="查看知名奢侈腕表品牌人工智能焦点小组案例详情"><img src="${A}cases-feature-watch.png" alt="知名奢侈腕表品牌人工智能焦点小组案例"><div class="cases-feature-result"><b>关键结果</b>${caseMetrics.map((metric) => `<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join("")}</div></a>
-        <div class="cases-feature-copy"><span>奢侈品 & 美容</span><h2>知名奢侈品牌：利用人工智能焦点小组捕捉品牌感知</h2>${button("了解更多", "/cases/luxury-ai")}</div>
+        <a class="cases-feature-image" href="/cases/watch-ai" aria-label="查看知名奢侈腕表品牌人工智能焦点小组案例详情"><img src="${A}cases-feature-watch.png" alt="知名奢侈腕表品牌人工智能焦点小组案例"><div class="cases-feature-result"><b>关键结果</b>${caseMetrics.map((metric) => `<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join("")}</div></a>
+        <div class="cases-feature-copy"><span>奢侈品 & 美容</span><h2>知名奢侈品牌：利用人工智能焦点小组捕捉品牌感知</h2>${button("了解更多", "/cases/watch-ai")}</div>
       </article>
     </header>
 
@@ -479,7 +474,7 @@ const caseDetailPage = `
         <h1>${detailCurrentStudy.title}</h1>
         <dl class="case-detail-meta"><div><dt>客户</dt><dd>大型奢侈品客户</dd></div><div><dt>服务</dt><dd>云服务、战略</dd></div><div><dt>日期</dt><dd>2026.5.12</dd></div></dl>
       </div>
-      <div class="case-detail-art"><img src="${A}${detailCurrentStudy.image}" alt="${detailCurrentStudy.alt}" width="${detailCurrentStudy.imageWidth}" height="${detailCurrentStudy.imageHeight}" decoding="async" fetchpriority="high"><div class="case-detail-result"><b>关键结果</b>${detailMetrics.map((metric) => `<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join("")}</div></div>
+      <div class="case-detail-art"><img src="${A}${detailCurrentStudy.image}" alt="${detailCurrentStudy.alt}" loading="eager" decoding="async" fetchpriority="high"><div class="case-detail-result"><b>关键结果</b>${detailMetrics.map((metric) => `<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join("")}</div></div>
     </header>
 
     <main>
