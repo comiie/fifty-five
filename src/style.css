@@ -10,7 +10,7 @@
 .why{height:857px}.brandtech{height:758px}.clients{height:670px}.services{height:840px}.partners{height:512px}.cases{height:940px}.contact{height:868px}
 @media(max-width:1400px) and (min-width:769px){.wrap{width:83.333vw}.nav-links{margin-left:0;gap:34px}.hero h1{font-size:42px}.why-grid{gap:16px}.why-card{padding:25px}.brand-grid{gap:50px}.services-grid{grid-template-columns:280px 1fr}.contact-grid{gap:50px;grid-template-columns:1fr 55%}.client-grid{gap:16px}.contact-cards{gap:16px}.contact-cards article{width:48%}}
 @media(max-width:768px){.section,.why,.brandtech,.clients,.services,.partners,.cases,.contact{height:auto}.hero-art{left:auto;right:0;width:70vw;height:100%;opacity:.78}.nav{top:8px}.partner-strip{grid-template-columns:repeat(6,150px);transform:translateX(-70px)}.case-track{grid-template-columns:repeat(3,85vw)}.footer-grid{gap:40px 20px}.socials{margin-top:18px}}
-.hero-art{overflow:hidden}.hero-poster{position:absolute;inset:0}.hero-video{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}.hero-art:after{content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:126px;background:url('/assets/hero-figma.png') top center/100% auto no-repeat;pointer-events:none}
+.hero-art{overflow:hidden}.hero-poster{position:absolute;z-index:0;inset:0;object-position:74% center}.hero-video{position:absolute;z-index:1;inset:0;width:100%;height:100%;object-fit:cover;object-position:74% center;visibility:hidden;pointer-events:none}.hero-video.is-media-ready{visibility:visible}.hero-art:after{content:"";position:absolute;z-index:2;left:0;right:0;top:0;height:126px;background:url('/assets/hero-figma.png') top center/100% auto no-repeat;pointer-events:none}
 
 /* Design-accurate finish pass */
 .hero-art:after{display:none}
@@ -257,7 +257,7 @@ footer .footer-follow .qr,.footer-follow>.qr{
 
 /* Progressive reveal; classes are added by JS so content remains visible without scripting. */
 .hero-enter{opacity:.55;transform:translateY(8px);filter:blur(1.5px);transition:opacity .56s cubic-bezier(.16,1,.3,1) var(--enter-delay,0ms),transform .62s cubic-bezier(.16,1,.3,1) var(--enter-delay,0ms),filter .5s ease var(--enter-delay,0ms)}
-.hero-art.hero-enter{transform:scale(1.008);transform-origin:center}
+.hero-art.hero-enter{transform:none}
 .hero-enter.is-visible{opacity:1;transform:none;filter:none}
 .nav.hero-enter,.nav.hero-enter.is-visible{transform:translateX(-50%)}
 .nav.hero-enter.is-hidden{transform:translate(-50%,-135%)}
@@ -2194,7 +2194,7 @@ footer .copyright{
 }
 
 /* Case detail desktop continuity and direct progress control. */
-body.is-case-detail-page .case-detail-art>img{
+.case-detail-art>img{
   inset:0;
   display:block;
   width:100%;
@@ -2207,6 +2207,10 @@ body.is-case-detail-page .case-detail-art>img{
   animation:none!important;
   transition:none!important;
   will-change:auto;
+  visibility:hidden;
+}
+.case-detail-art>img.is-media-ready{
+  visibility:visible;
 }
 body.is-case-detail-page .detail-related .case-track .case-card:nth-child(n) .case-image>img{
   width:100%;
@@ -2215,85 +2219,6 @@ body.is-case-detail-page .detail-related .case-track .case-card:nth-child(n) .ca
   object-fit:cover;
   object-position:center;
   transform:none;
-}
-
-/* Keep case banners visually stable while the pointer crosses a card. */
-body.is-cases-page .cases-feature.reveal,
-body.is-cases-page .cases-feature.reveal.is-visible{
-  opacity:1!important;
-  filter:none!important;
-  transform:none!important;
-  transition:none!important;
-}
-
-@media(min-width:769px) and (hover:hover){
-  .cases-feature-image>img,
-  .cases-list-image>img,
-  .case-track .case-image>img{
-    scale:1!important;
-    animation:none!important;
-    transition:none!important;
-    will-change:auto!important;
-  }
-
-  .cases-feature-result,
-  .cases-list-result,
-  .case-track .result,
-  .cases-feature-result strong,
-  .cases-feature-result small,
-  .cases-list-result strong,
-  .cases-list-result small,
-  .case-track .result strong,
-  .case-track .result small{
-    transition:none!important;
-  }
-
-  .cases-feature:hover .cases-feature-result,
-  .cases-feature:focus-visible .cases-feature-result,
-  .cases-list-card:hover .cases-list-result,
-  .cases-list-card:focus-visible .cases-list-result,
-  .case-track .case-card:hover .result,
-  .case-track .case-card:focus-visible .result{
-    height:162px;
-    background:rgba(255,255,255,.08);
-    color:#fff;
-    -webkit-backdrop-filter:blur(30px);
-    backdrop-filter:blur(30px);
-  }
-
-  .cases-feature:hover .cases-feature-result strong,
-  .cases-feature:focus-visible .cases-feature-result strong,
-  .cases-list-card:hover .cases-list-result strong,
-  .cases-list-card:focus-visible .cases-list-result strong,
-  .case-track .case-card:hover .result strong,
-  .case-track .case-card:focus-visible .result strong{
-    color:#fff;
-  }
-
-  .cases-feature:hover .cases-feature-result small,
-  .cases-feature:focus-visible .cases-feature-result small,
-  .cases-list-card:hover .cases-list-result small,
-  .cases-list-card:focus-visible .cases-list-result small,
-  .case-track .case-card:hover .result small,
-  .case-track .case-card:focus-visible .result small{
-    color:rgba(255,255,255,.8);
-  }
-
-  .cases-feature:hover .cases-feature-result strong:nth-of-type(n+2),
-  .cases-feature:hover .cases-feature-result small:nth-of-type(n+2),
-  .cases-feature:focus-visible .cases-feature-result strong:nth-of-type(n+2),
-  .cases-feature:focus-visible .cases-feature-result small:nth-of-type(n+2),
-  .cases-list-card:hover .cases-list-result strong:nth-of-type(n+2),
-  .cases-list-card:hover .cases-list-result small:nth-of-type(n+2),
-  .cases-list-card:focus-visible .cases-list-result strong:nth-of-type(n+2),
-  .cases-list-card:focus-visible .cases-list-result small:nth-of-type(n+2),
-  .case-track .case-card:hover .result strong:nth-of-type(n+2),
-  .case-track .case-card:hover .result small:nth-of-type(n+2),
-  .case-track .case-card:focus-visible .result strong:nth-of-type(n+2),
-  .case-track .case-card:focus-visible .result small:nth-of-type(n+2){
-    opacity:0;
-    transform:translateY(14px);
-  }
 }
 
 @media(min-width:1440px) and (max-width:1920px){

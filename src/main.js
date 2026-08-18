@@ -563,6 +563,9 @@ const privacyPage = `
   </div>
 `;
 
+document.body.classList.toggle("is-cases-page", isCasesPage);
+document.body.classList.toggle("is-case-detail-page", isCaseDetailPage);
+document.body.classList.toggle("is-privacy-page", isPrivacyPage);
 document.querySelector("#app").innerHTML = isPrivacyPage
   ? privacyPage
   : isCaseDetailPage
@@ -570,9 +573,15 @@ document.querySelector("#app").innerHTML = isPrivacyPage
     : isCasesPage
       ? casesPage
       : homePage;
-document.body.classList.toggle("is-cases-page", isCasesPage);
-document.body.classList.toggle("is-case-detail-page", isCaseDetailPage);
-document.body.classList.toggle("is-privacy-page", isPrivacyPage);
+
+const markDecodedImageReady = (image) => {
+  if (!image) return;
+  const show = () => requestAnimationFrame(() => image.classList.add("is-media-ready"));
+  const decode = () => (typeof image.decode === "function" ? image.decode().catch(() => {}) : Promise.resolve()).then(show);
+  if (image.complete && image.naturalWidth > 0) decode();
+  else image.addEventListener("load", decode, { once: true });
+};
+markDecodedImageReady(document.querySelector(".case-detail-art>img"));
 if (isCasesPage) document.title = "成功案例｜fifty-five";
 if (isCaseDetailPage) document.title = `${detailCurrentStudy.title}｜fifty-five`;
 if (isPrivacyPage) document.title = "隐私政策｜fifty-five";
@@ -1165,6 +1174,9 @@ const nav = document.querySelector(".nav");
 const heroVideo = document.querySelector(".hero-video");
 if (heroVideo) {
   heroVideo.muted = true;
+  const showHeroVideo = () => requestAnimationFrame(() => heroVideo.classList.add("is-media-ready"));
+  if (heroVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) showHeroVideo();
+  else heroVideo.addEventListener("loadeddata", showHeroVideo, { once: true });
   heroVideo.play().catch(() => {});
 }
 let previousY = scrollY;
