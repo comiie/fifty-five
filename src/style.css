@@ -2204,6 +2204,9 @@ body.is-case-detail-page .case-detail-art>img{
   object-position:center;
   transform:none;
   contain:paint;
+  animation:none!important;
+  transition:none!important;
+  will-change:auto;
 }
 body.is-case-detail-page .detail-related .case-track .case-card:nth-child(n) .case-image>img{
   width:100%;
@@ -2212,6 +2215,85 @@ body.is-case-detail-page .detail-related .case-track .case-card:nth-child(n) .ca
   object-fit:cover;
   object-position:center;
   transform:none;
+}
+
+/* Keep case banners visually stable while the pointer crosses a card. */
+body.is-cases-page .cases-feature.reveal,
+body.is-cases-page .cases-feature.reveal.is-visible{
+  opacity:1!important;
+  filter:none!important;
+  transform:none!important;
+  transition:none!important;
+}
+
+@media(min-width:769px) and (hover:hover){
+  .cases-feature-image>img,
+  .cases-list-image>img,
+  .case-track .case-image>img{
+    scale:1!important;
+    animation:none!important;
+    transition:none!important;
+    will-change:auto!important;
+  }
+
+  .cases-feature-result,
+  .cases-list-result,
+  .case-track .result,
+  .cases-feature-result strong,
+  .cases-feature-result small,
+  .cases-list-result strong,
+  .cases-list-result small,
+  .case-track .result strong,
+  .case-track .result small{
+    transition:none!important;
+  }
+
+  .cases-feature:hover .cases-feature-result,
+  .cases-feature:focus-visible .cases-feature-result,
+  .cases-list-card:hover .cases-list-result,
+  .cases-list-card:focus-visible .cases-list-result,
+  .case-track .case-card:hover .result,
+  .case-track .case-card:focus-visible .result{
+    height:162px;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    -webkit-backdrop-filter:blur(30px);
+    backdrop-filter:blur(30px);
+  }
+
+  .cases-feature:hover .cases-feature-result strong,
+  .cases-feature:focus-visible .cases-feature-result strong,
+  .cases-list-card:hover .cases-list-result strong,
+  .cases-list-card:focus-visible .cases-list-result strong,
+  .case-track .case-card:hover .result strong,
+  .case-track .case-card:focus-visible .result strong{
+    color:#fff;
+  }
+
+  .cases-feature:hover .cases-feature-result small,
+  .cases-feature:focus-visible .cases-feature-result small,
+  .cases-list-card:hover .cases-list-result small,
+  .cases-list-card:focus-visible .cases-list-result small,
+  .case-track .case-card:hover .result small,
+  .case-track .case-card:focus-visible .result small{
+    color:rgba(255,255,255,.8);
+  }
+
+  .cases-feature:hover .cases-feature-result strong:nth-of-type(n+2),
+  .cases-feature:hover .cases-feature-result small:nth-of-type(n+2),
+  .cases-feature:focus-visible .cases-feature-result strong:nth-of-type(n+2),
+  .cases-feature:focus-visible .cases-feature-result small:nth-of-type(n+2),
+  .cases-list-card:hover .cases-list-result strong:nth-of-type(n+2),
+  .cases-list-card:hover .cases-list-result small:nth-of-type(n+2),
+  .cases-list-card:focus-visible .cases-list-result strong:nth-of-type(n+2),
+  .cases-list-card:focus-visible .cases-list-result small:nth-of-type(n+2),
+  .case-track .case-card:hover .result strong:nth-of-type(n+2),
+  .case-track .case-card:hover .result small:nth-of-type(n+2),
+  .case-track .case-card:focus-visible .result strong:nth-of-type(n+2),
+  .case-track .case-card:focus-visible .result small:nth-of-type(n+2){
+    opacity:0;
+    transform:translateY(14px);
+  }
 }
 
 @media(min-width:1440px) and (max-width:1920px){
