@@ -196,8 +196,29 @@ const generatedDetailMatch = detailSlug.match(/^([a-z]+)-(\d+)$/);
 const generatedDetailStudy = generatedDetailMatch
   ? casesForIndustry(generatedDetailMatch[1])[Number(generatedDetailMatch[2]) - 1]
   : null;
-const detailCurrentStudy =
+const detailHeroBySlug = {
+  "luxury-ai": ["detail-banner-luxury.jpg", 1350, 774],
+  "estee-lauder": ["detail-banner-estee.jpg", 2760, 1600],
+  "auto-1": ["detail-banner-auto.jpg", 2706, 1496],
+};
+const detailBaseStudy =
   casesPageStudies.find((item) => item.href?.endsWith(`/${detailSlug}`)) || generatedDetailStudy || casesPageStudies[0];
+const detailHero = detailHeroBySlug[detailSlug];
+const detailCurrentStudy = {
+  ...detailBaseStudy,
+  image: detailHero?.[0] || detailBaseStudy.image,
+  imageWidth: detailHero?.[1] || 1080,
+  imageHeight: detailHero?.[2] || 878,
+};
+
+if (isCaseDetailPage) {
+  const detailHeroPreload = document.createElement("link");
+  detailHeroPreload.rel = "preload";
+  detailHeroPreload.as = "image";
+  detailHeroPreload.href = `${A}${detailCurrentStudy.image}`;
+  detailHeroPreload.fetchPriority = "high";
+  document.head.append(detailHeroPreload);
+}
 
 const detailMetrics = [
   ["1900+", "经传统市场研究验证的独特感知评分"],
@@ -458,7 +479,7 @@ const caseDetailPage = `
         <h1>${detailCurrentStudy.title}</h1>
         <dl class="case-detail-meta"><div><dt>客户</dt><dd>大型奢侈品客户</dd></div><div><dt>服务</dt><dd>云服务、战略</dd></div><div><dt>日期</dt><dd>2026.5.12</dd></div></dl>
       </div>
-      <div class="case-detail-art"><img src="${A}${detailCurrentStudy.image}" alt="${detailCurrentStudy.alt}"><div class="case-detail-result"><b>关键结果</b>${detailMetrics.map((metric) => `<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join("")}</div></div>
+      <div class="case-detail-art"><img src="${A}${detailCurrentStudy.image}" alt="${detailCurrentStudy.alt}" width="${detailCurrentStudy.imageWidth}" height="${detailCurrentStudy.imageHeight}" decoding="async" fetchpriority="high"><div class="case-detail-result"><b>关键结果</b>${detailMetrics.map((metric) => `<strong>${metric[0]}</strong><small>${metric[1]}</small>`).join("")}</div></div>
     </header>
 
     <main>
