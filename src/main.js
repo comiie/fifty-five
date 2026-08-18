@@ -24,8 +24,8 @@ const services = [
     description: "整合网站、App、CRM、会员系统与业务数据，帮助企业全面掌握用户行为、营销表现与业务增长情况。",
     list: ["GA4", "神策分析", "Google Analytics 360", "服务器端追踪", "可视化仪表板"],
     image: "service-measurement-figma.png",
-    imageY: "-17%",
-    imageH: "124.667%",
+    imageY: "0%",
+    imageH: "100%",
   },
   {
     id: "service-media",
@@ -38,7 +38,7 @@ const services = [
     list: ["营销组合模型（MMM）", "Meridian", "Display & Video 360", "Search Ads 360", "受众策略规划", "广告投放优化"],
     image: "service-media-figma.png",
     imageY: "0%",
-    imageH: "124.667%",
+    imageH: "100%",
   },
   {
     id: "service-ai",
@@ -50,8 +50,8 @@ const services = [
     description: "结合人工智能与数据科学能力，帮助企业实现洞察自动化、预测分析与智能決策。",
     list: ["AgentHub", "GEO 优化", "预测模型", "AI洞察分析", "自动化报表"],
     image: "service-ai-figma.png",
-    imageY: "-15%",
-    imageH: "124.667%",
+    imageY: "0%",
+    imageH: "100%",
   },
   {
     id: "service-cloud",
@@ -63,8 +63,8 @@ const services = [
     description: "打通企业内部与外部数据来源，建立可治理、可扩展的数据基础设施，为 AI 与数字化转型奠定基础。",
     list: ["BigQuery", "CDP", "神策 CDP", "数据仓库", "数据治理", "第一方数据策略"],
     image: "service-cloud-figma.png",
-    imageY: "-2.833%",
-    imageH: "125.667%",
+    imageY: "0%",
+    imageH: "100%",
   },
 ];
 
