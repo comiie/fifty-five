@@ -284,7 +284,7 @@ const homePage = `
   <div class="site-shell">
     <header class="hero screen" id="top">
       <nav class="nav wrap" aria-label="主导航">
-        <img src="${A}logo.png" class="logo" alt="fifty-five" />
+        <a href="#top" aria-label="返回页面顶部"><img src="${A}logo.png" class="logo" alt="fifty-five" /></a>
         <div class="nav-links"><a href="#services">我们的服务</a><a href="/cases">成功案例</a><a href="#contact">文章</a></div>
         <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>${button("联系我们")}</div>
       </nav>
