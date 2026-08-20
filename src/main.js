@@ -956,6 +956,8 @@ if (caseTrack && caseProgress && caseProgressThumb) {
     "wheel",
     (event) => {
       if (event.ctrlKey || innerWidth <= 768 || caseMinOffset === 0) return;
+      event.preventDefault();
+      event.stopPropagation();
       const rawDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
       if (Math.abs(rawDelta) < 0.1) return;
       const modeScale = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 20 : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? innerWidth : 1;
@@ -967,7 +969,7 @@ if (caseTrack && caseProgress && caseProgressThumb) {
       caseWheelTarget = nextTarget;
       if (!caseWheelFrame) caseWheelFrame = requestAnimationFrame(runCaseWheel);
     },
-    { passive: true },
+    { passive: false },
   );
   caseProgress.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || event.button !== 0) return;
