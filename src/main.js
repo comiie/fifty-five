@@ -963,13 +963,11 @@ if (caseTrack && caseProgress && caseProgressThumb) {
       const nextTarget = clampCaseOffset(caseWheelTarget - delta * 1.05);
       const isStillMoving = Math.abs(caseWheelTarget - caseOffset) >= 0.35;
       if (nextTarget === caseWheelTarget && !isStillMoving) return;
-      event.preventDefault();
-      event.stopPropagation();
       stopCaseInertia();
       caseWheelTarget = nextTarget;
       if (!caseWheelFrame) caseWheelFrame = requestAnimationFrame(runCaseWheel);
     },
-    { passive: false },
+    { passive: true },
   );
   caseProgress.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || event.button !== 0) return;
