@@ -284,7 +284,7 @@ const homePage = `
   <div class="site-shell">
     <header class="hero screen" id="top">
       <nav class="nav wrap" aria-label="主导航">
-        <a href="#top" aria-label="返回页面顶部"><img src="${A}logo.png" class="logo" alt="fifty-five" /></a>
+        <a class="home-logo-link" href="#top" aria-label="滚动返回页面顶部"><img src="${A}logo.png" class="logo" alt="fifty-five" /></a>
         <div class="nav-links"><a href="#services">我们的服务</a><a href="/cases">成功案例</a><a href="#contact">文章</a></div>
         <div class="nav-actions"><a class="lang" href="https://www.fifty-five.com/" target="_blank" rel="noopener noreferrer" aria-label="在新页面访问 fifty-five 英文官网">EN</a>${button("联系我们")}</div>
       </nav>
@@ -695,6 +695,11 @@ if ("IntersectionObserver" in window) {
 
 // 仅处理滚轮阻尼；页面内容本身保持静态。
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.querySelector(".home-logo-link")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  history.replaceState(null, "", "#top");
+});
 
 // Keep the reference cube motion confined to the right-hand media frame.
 const brandMotionStage = document.querySelector(".brand-motion");
