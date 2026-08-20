@@ -818,8 +818,11 @@ const caseTrack = document.querySelector(".case-track");
 const caseProgress = document.querySelector(".case-progress");
 const caseProgressThumb = caseProgress?.querySelector("span");
 if (caseTrack && caseProgress && caseProgressThumb) {
+  const caseSlider = caseTrack.closest(".case-slider");
   let caseOffset = 0;
   let caseMinOffset = 0;
+  let caseWheelTarget = 0;
+  let caseWheelFrame = 0;
   let casePointerActive = false;
   let caseDragging = false;
   let caseHasMoved = false;
@@ -837,10 +840,30 @@ if (caseTrack && caseProgress && caseProgressThumb) {
     caseProgressThumb.style.transform = `translate3d(${travel * ratio}px,0,0)`;
     caseProgress.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
   };
-  const setCaseOffset = (value) => {
-    caseOffset = Math.max(caseMinOffset, Math.min(0, value));
+  const clampCaseOffset = (value) => Math.max(caseMinOffset, Math.min(0, value));
+  const renderCaseOffset = (value) => {
+    caseOffset = clampCaseOffset(value);
     caseTrack.style.transform = `translate3d(${caseOffset}px,0,0)`;
     updateCaseProgress();
+  };
+  const setCaseOffset = (value) => {
+    caseWheelTarget = clampCaseOffset(value);
+    renderCaseOffset(caseWheelTarget);
+  };
+  const stopCaseWheel = () => {
+    if (caseWheelFrame) cancelAnimationFrame(caseWheelFrame);
+    caseWheelFrame = 0;
+    caseWheelTarget = caseOffset;
+  };
+  const runCaseWheel = () => {
+    const distance = caseWheelTarget - caseOffset;
+    if (Math.abs(distance) < 0.35) {
+      renderCaseOffset(caseWheelTarget);
+      caseWheelFrame = 0;
+      return;
+    }
+    renderCaseOffset(caseOffset + distance * 0.18);
+    caseWheelFrame = requestAnimationFrame(runCaseWheel);
   };
   const measureCaseSlider = () => {
     const baseLeft = caseTrack.getBoundingClientRect().left - caseOffset;
@@ -879,6 +902,7 @@ if (caseTrack && caseProgress && caseProgressThumb) {
 
   caseTrack.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || event.button !== 0) return;
+    stopCaseWheel();
     stopCaseInertia();
     casePointerActive = true;
     caseDragging = false;
@@ -928,9 +952,29 @@ if (caseTrack && caseProgress && caseProgressThumb) {
     true,
   );
   caseTrack.addEventListener("dragstart", (event) => event.preventDefault());
+  caseSlider?.addEventListener(
+    "wheel",
+    (event) => {
+      if (event.ctrlKey || innerWidth <= 768 || caseMinOffset === 0) return;
+      const rawDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+      if (Math.abs(rawDelta) < 0.1) return;
+      const modeScale = event.deltaMode === WheelEvent.DOM_DELTA_LINE ? 20 : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? innerWidth : 1;
+      const delta = rawDelta * modeScale;
+      const nextTarget = clampCaseOffset(caseWheelTarget - delta * 1.05);
+      const isStillMoving = Math.abs(caseWheelTarget - caseOffset) >= 0.35;
+      if (nextTarget === caseWheelTarget && !isStillMoving) return;
+      event.preventDefault();
+      event.stopPropagation();
+      stopCaseInertia();
+      caseWheelTarget = nextTarget;
+      if (!caseWheelFrame) caseWheelFrame = requestAnimationFrame(runCaseWheel);
+    },
+    { passive: false },
+  );
   caseProgress.addEventListener("pointerdown", (event) => {
     if (!event.isPrimary || event.button !== 0) return;
     event.preventDefault();
+    stopCaseWheel();
     stopCaseInertia();
     progressPointerId = event.pointerId;
     caseProgress.classList.add("is-dragging");
